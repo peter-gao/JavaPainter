@@ -5,7 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class MainWindows extends JFrame{
-    
+    Dimension stize; 
     Dimension size; 
     ToolBar tbar;
     Page page;
