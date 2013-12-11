@@ -10,13 +10,15 @@ import java.util.ArrayList;
 
 public class Page extends JPanel {
     
+   // ToolBar color ; 
     MainWindows parent = null;
     Point lp ;
     ArrayList<Line> lines = null;
     
-    Page(MainWindows p)
+    Page(MainWindows p/*, ToolBar c*/)
 	{
             parent = p;
+           // color = c;
             lp = new Point(-1,-1);
             lines =new ArrayList<Line>();
             
@@ -59,11 +61,10 @@ public class Page extends JPanel {
                         if(parent.parent.status == Status.drawLine)
                         {
                             if (lp.x != -1){
-                                System.out.println("test" + e.getX() + ";" + e.getY());
                                 java.awt.Graphics g = Page.this.getGraphics();
                                 //取畫筆
                                 g.setPaintMode();  
-                                g.setColor(Color.red);
+                                g.setColor(parent.tbar.c);
                                 g.drawLine(lp.x,lp.y,e.getX(),e.getY());
                                 lines.add(new Line(lp , e.getPoint()));
                             }
@@ -86,7 +87,7 @@ public class Page extends JPanel {
                              java.awt.Graphics g = Page.this.getGraphics();
                              //取畫筆
                              g.setPaintMode();  
-                             g.setColor(Color.blue);
+                             g.setColor(parent.tbar.c);
                              g.drawLine(lp.x,lp.y,e.getX(),e.getY());
                              
                              lines.add(new Line(lp , e.getPoint()));
@@ -101,11 +102,8 @@ public class Page extends JPanel {
     
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.setPaintMode();
-        g.setColor(Color.blue);
-        g.drawLine(0,0,200,200);
-        
         Line temp;
+        
         for(int i =0 ; i < lines.size() ; i++){
             temp = lines.get(i);
             g.drawLine(temp.start.x, temp.start.y, temp.end.x, temp.end.y);
