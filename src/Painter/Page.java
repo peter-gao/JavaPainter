@@ -9,16 +9,14 @@ import java.util.ArrayList;
 
 
 public class Page extends JPanel {
-    
-   // ToolBar color ; 
+     
     MainWindows parent = null;
     Point lp ;
     ArrayList<Line> lines = null;
     
-    Page(MainWindows p/*, ToolBar c*/)
+    Page(MainWindows p)
 	{
             parent = p;
-           // color = c;
             lp = new Point(-1,-1);
             lines =new ArrayList<Line>();
             
@@ -67,6 +65,11 @@ public class Page extends JPanel {
                                 g.setColor(parent.tbar.c);
                                 g.drawLine(lp.x,lp.y,e.getX(),e.getY());
                                 lines.add(new Line(lp , e.getPoint()));
+                                
+                                
+                                Image image   = new ImageIcon("tool7.gif").getImage();
+                                Cursor cursor = Toolkit.getDefaultToolkit().createCustomCursor(image,new Point(0,0), "test");
+                                
                             }
                             lp = e.getPoint();
                             
