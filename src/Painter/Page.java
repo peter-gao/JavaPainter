@@ -20,6 +20,7 @@ public class Page extends JPanel {
             lp = new Point(-1,-1);
             lines =new ArrayList<Line>();
             
+            
             this.setBackground(Color.yellow);
 		 //設定畫布顏色為黃色
             this.setLayout(null);
@@ -64,12 +65,7 @@ public class Page extends JPanel {
                                 g.setPaintMode();  
                                 g.setColor(parent.tbar.c);
                                 g.drawLine(lp.x,lp.y,e.getX(),e.getY());
-                                lines.add(new Line(lp , e.getPoint()));
-                                
-                                
-                                Image image   = new ImageIcon("tool7.gif").getImage();
-                                Cursor cursor = Toolkit.getDefaultToolkit().createCustomCursor(image,new Point(0,0), "test");
-                                
+                                lines.add(new Line(lp , e.getPoint(),g.getColor()));       
                             }
                             lp = e.getPoint();
                             
@@ -93,7 +89,7 @@ public class Page extends JPanel {
                              g.setColor(parent.tbar.c);
                              g.drawLine(lp.x,lp.y,e.getX(),e.getY());
                              
-                             lines.add(new Line(lp , e.getPoint()));
+                             lines.add(new Line(lp , e.getPoint() , g.getColor()));
                         }
                         lp = e.getPoint();
                     }
@@ -110,6 +106,7 @@ public class Page extends JPanel {
         for(int i =0 ; i < lines.size() ; i++){
             temp = lines.get(i);
             g.drawLine(temp.start.x, temp.start.y, temp.end.x, temp.end.y);
+            g.setColor(temp.color);
         }
     }
 }
