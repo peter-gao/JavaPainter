@@ -186,7 +186,6 @@ public class Page extends JPanel {
                             f.setSize(r2.getSize());
                             repaint();
                             Page.this.add(f);
-                            System.out.println("width:"+(r2.getSize().width)+"height:"+(r2.getSize().height));
                         }
                     }
                 }
