@@ -1,14 +1,14 @@
-
 package Painter;
 
 import java.awt.*;
 import javax.swing.*;
 
 public class MainWindows extends JFrame{
-    Dimension stize; 
+    
     Dimension size; 
     ToolBar tbar;
     Page page;
+    Label  statusbar; 
     Painter parent = null;
     
     MainWindows(Painter p,String s,Dimension size)
@@ -35,16 +35,19 @@ public class MainWindows extends JFrame{
        
         tbar = new ToolBar(this);  //載入ToolBar物件
         page = new Page(this);     //載入Page物件
+        statusbar = new Label(this);
         
         this.getContentPane().setLayout(new BorderLayout());
         //在內容介面裡面的設計新增  ""BorderLayout()""<--介面管理員
-        
+                
         this.getContentPane().add(tbar, BorderLayout.NORTH);
         //在內容介面裡面加入 BorderLayout() 並且讓 tbar在上方
            
         this.getContentPane().add(page, BorderLayout.CENTER);
         //在內容介面裡面加入 BorderLayout() 並且讓 page在中間
-         
+        
+        this.getContentPane().add(statusbar, BorderLayout.SOUTH);
+       
         setVisible(true); //顯示
-    }
+    } 
 }
